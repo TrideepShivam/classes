@@ -1,0 +1,4 @@
+open repo
+create a folder
+otherwise open your folder
+upload your files.
