@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            display:flex;
+            align-items: center;
+        }
+        div{
+            height: 100px;
+            width:100px;
+            border-radius:100px;
+            background-color:#f54;
+            border:2px solid red;
+            position:absolute;
+
+            animation:jaishreeram 2s ease 2s 5;
+        }
+        button{
+            position:absolute;
+            left:0%;
+            animation:jaishreeram 5s 2;
+        }
+        @keyframes jaishreeram{
+            0%{left:0%;}
+            25%{width:200px;}
+            50%{left:90%;width:100px;}
+            75%{width:200px;}
+            100%{left:0%;}
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button>clickme</button>
+
+</body>
+</html>
