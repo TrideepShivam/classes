@@ -5,35 +5,48 @@
         body{
             margin:0;
             display:flex;
+            justify-content: center;
             align-items: center;
         }
-        div{
-            height: 100px;
-            width:100px;
-            border-radius:100px;
+        #parent{
+            width:600px;
+            height:auto;
             background-color:#f54;
-            border:2px solid red;
-            position:absolute;
-
-            animation:jaishreeram 2s ease 2s 5;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:space-around;
+            align-items: center;
         }
-        button{
-            position:absolute;
-            left:0%;
-            animation:jaishreeram 5s 2;
+        .child{
+            height:100px;
+            width:100px;
+            margin:5px;
+            background:yellow;
         }
-        @keyframes jaishreeram{
-            0%{left:0%;}
-            25%{width:200px;}
-            50%{left:90%;width:100px;}
-            75%{width:200px;}
-            100%{left:0%;}
-        }
+        
     </style>
 </head>
 <body>
-    <div></div>
-    <button>clickme</button>
+    <div id="parent">
+        <div class="child" id="one">1</div>
+        <div class="child">2</div>
+        <div class="child">3</div>
+        <div class="child">4</div>
+        <div class="child">5</div>
+        <div class="child">6</div>
+        <div class="child">7</div>
+        <div class="child">8</div>
+        <div class="child">9</div>
+        <div class="child">10</div>
+        <div class="child">11</div>
+        <div class="child">12</div>
+        <div class="child">13</div>
+        <div class="child">14</div>
+        <div class="child">15</div>
+        <div class="child">16</div>
+        <div class="child">17</div>
+        <div class="child">18</div>
+    </div>
 
 </body>
 </html>

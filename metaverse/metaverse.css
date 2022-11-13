@@ -1,0 +1,92 @@
+body{margin:0;font-family:Verdana, Geneva, Tahoma, sans-serif;}
+#logo{position: fixed;top:5px;width:80px;height:80px;}
+#navigation{
+    display:flex;
+    position:absolute;
+    right:0px;
+}
+#navigation a{
+    padding:15px 40px;
+    color:#06f7eb;
+    text-decoration: none;
+}
+#navigation a:hover{
+    color:white;
+}
+#main{
+    width:100%;
+    height:100%;
+    background-image:url('metaverse.jpg');
+    background-size:cover;
+    overflow:hidden;
+}
+#mainText{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    color:#06f7eb;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    font-size:40px;
+    animation:myanime 2s 1;
+    
+}
+#technology{
+    width:100%;
+    padding:100px 0px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content: center;
+    background:silver;
+}
+#technology #head{
+    flex-basis: 100%;
+    text-align: center;
+    margin:50px 0;
+}
+.card{
+    margin:20px;
+    width:300px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    overflow:auto;
+    background:rgb(250,250,250);
+    text-align: justify;
+    gap:5px;
+    box-shadow:0 0 10px rgba(0,0,0,.4);    
+    animation:myanime 2s 1;
+}
+#web{animation-delay:.5s;}
+#bc{animation-delay:1s;}
+#cc{animation-delay:1.5s;}
+.card h1{font-size: 20px;color:dodgerblue;}
+.card p{font-size: 15px;}
+#mainText *,.card *{margin:0;}
+
+#balloon{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background-color: whitesmoke;
+    box-shadow:0 0 15px rgb(75, 74, 74) inset;
+    transform-origin: -300px 200px;
+    animation:bubble 2s infinite linear;
+}
+
+@keyframes bubble{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+
+@keyframes myanime{
+    0%{opacity:0;transform:translate(0px,20px);}
+    50%{transform-origin: 300px 200px;}
+    100%{opacity:1;transform:translate(0px,0px);}
+}
