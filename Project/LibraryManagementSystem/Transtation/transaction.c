@@ -28,7 +28,14 @@ void logTransation(Transaction t){
     printf("Data written successfully!\n");
 }
 
-
+void getAllTransaction(){
+    FILE *f;
+    f = fopen("Transaction.dat","rb");
+    if (f==NULL){
+        printf("File does not exist.");
+    }
+    
+}
 void main(){
     Transaction t = {1,340,{9,50,30},{12,12,2012}};
     logTransation(t);
