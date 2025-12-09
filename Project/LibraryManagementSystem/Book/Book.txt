@@ -6,4 +6,12 @@
 3. Book B_Retrive (int id);
     this will recieve the id of the book and return all data of book 
     after searching from the book.dat file if available
-    otherwise will return null
+    otherwise will return null.
+4. get_book_by_author(const char *author);
+    this will recieve the auther name of the book and print all data of book 
+    after searching from the book.dat file if available
+    otherwise will print "Sorry, Not found".
+5. get_ID();
+    This will find the last Book_ID from Book.dat and 
+    return the Book_ID after adding 1 .   
+    
