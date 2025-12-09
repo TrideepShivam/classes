@@ -93,18 +93,49 @@ int get_ID() {
     return temp+1;
 
 }
+// Function to print books by genere
+void get_book_by_genere(const char *genere) {
+    Book B_R;
+    FILE *f = fopen("Book.dat", "rb");  // rb = read binary
+
+    if (f == NULL) {
+        printf("File doesn't exist.\n");
+        return;
+    }
+
+    int count = 0;
+    printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n-15s  | %-20s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","GENERE","NAME","AUTHOR","ID","PRICE","COUNT");
+    while (fread(&B_R, sizeof(Book), 1, f)) {
+        if (strcmp(B_R.Genere,genere) == 0) {
+            count++;
+            printf("%-15s | %-20s | %-13s | %-5d | %-8d | %-5d\n",B_R.Genere,B_R.B_name,B_R.Author,B_R.Book_ID,B_R.price,B_R.B_count);      
+        }
+    }
+
+    if (count == 0) {
+        printf("Sorry, Not found\n");
+    }
+
+    fclose(f);
+}
+
+
 
 int main() {
    
     //Book B = {"Programming with C++", "Shivam", 1749, "Programming", 2, 26};
     // Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
     // B_Register(B);
-    //char author[50];
-    //printf("Enter author name: ");
-    //scanf("%s", author);
+
+    char genere[50];
+    printf("Enter genere : ");
+    scanf("%s", genere);
+    get_book_by_genere(genere);
+
     //get_book_by_author(author);
-    int temp =get_ID();
-    printf("%d",temp);
-    return 0;
+    //int temp =get_ID();
+    //printf("%d",temp);
+    //return 0;
+
 }
 
