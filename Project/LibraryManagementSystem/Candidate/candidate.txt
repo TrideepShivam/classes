@@ -1,0 +1,11 @@
+1. void registerCandidate(Candidate c): 
+        This function is used to add a new candidate's informations like ID,NAME,CONATACT,EMAIL,
+        DATE OF JOINING AND EXIT DATE into the system and collects all important details from 
+        the user and stores in candidate.dat.
+
+2. void showCandidate( ): 
+        This function is used to show all candidate's information into the system and show 
+        all importatnt details of the user in a tabular structure.
+
+3. Candidate getCandidateById(int id): 
+        This function is used to return candidate structure after comparing the given ID.
