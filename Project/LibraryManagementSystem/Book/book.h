@@ -26,5 +26,5 @@ void get_book_by_author(const char *author);
 int get_ID(void);
 void get_book_by_genere(const char *genere);
 void get_book_by_name(const char *name);
-
+Book Showall_Book ();
 #endif /* BOOK_H */
