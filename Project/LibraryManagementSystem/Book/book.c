@@ -1,16 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-
-// for taking informations....
-typedef struct {
-    char B_name [100];
-    char Author [50];
-    int price;
-    char Genere [50]; //catagory of book...
-    int B_count;
-    int Book_ID;
-} Book;
+#include "book.h"
 
 // Function for register book details in file...
 // Function nmae = "B_Register"....
