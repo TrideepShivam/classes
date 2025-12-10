@@ -18,5 +18,13 @@
     this will recieve the genere of the book and print all data of book 
     after searching from the book.dat file if available
     otherwise will print "Sorry, Not found".
-    
-    
+7. get_book_by_name(const char *name) ;    
+    this will recieve the name of the book and print all data of book 
+    after searching from the book.dat file if available
+    otherwise will print "Sorry, Not found".
+8. update_book_count(int ID ,int count);
+    update_book_count
+    Updates the book quantity in Book.dat by matching Book_ID 
+    and rewriting the record.
+9. Showall_Book ();
+    this fuction will  print all book details ..
