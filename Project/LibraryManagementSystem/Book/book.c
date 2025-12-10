@@ -63,7 +63,7 @@ void get_book_by_author(const char *author) {
     int count = 0;
     printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-5s | %-20s | %-13s | %-15s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","ID","NAME","AUTHOR","GENERE","PRICE","COUNT");
     while (fread(&B_R, sizeof(Book), 1, f)) {
-        if (strcmp(B_R.Author, author) == 0) {
+        if (strcasecmp(B_R.Author, author) == 0) {
             count++;
             printf("%-5d | %-20s | %-13s | %-15s | %-8d | %-5d\n",B_R.Book_ID,B_R.B_name,B_R.Author,B_R.Genere,B_R.price,B_R.B_count);      
         }
@@ -83,7 +83,7 @@ int get_ID() {
 
     if (f == NULL) {
         printf("File doesn't exist.\n");
-        return;
+        return -1;
     }
     int temp;
     while (fread(&B_R, sizeof(Book), 1, f)){
@@ -100,13 +100,12 @@ void get_book_by_genere(const char *genere) {
 
     if (f == NULL) {
         printf("File doesn't exist.\n");
-        return;
     }
 
     int count = 0;
-    printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n-15s  | %-20s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","GENERE","NAME","AUTHOR","ID","PRICE","COUNT");
+    printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-15s  | %-20s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","GENERE","NAME","AUTHOR","ID","PRICE","COUNT");
     while (fread(&B_R, sizeof(Book), 1, f)) {
-        if (strcmp(B_R.Genere,genere) == 0) {
+        if (strcasecmp(B_R.Genere,genere) == 0) {
             count++;
             printf("%-15s | %-20s | %-13s | %-5d | %-8d | %-5d\n",B_R.Genere,B_R.B_name,B_R.Author,B_R.Book_ID,B_R.price,B_R.B_count);      
         }
@@ -120,6 +119,36 @@ void get_book_by_genere(const char *genere) {
 }
 
 
+// Function to print books by name
+void get_book_by_name(const char *name) {
+    Book B_R;
+    FILE *f = fopen("Book.dat", "rb");  // rb = read binary
+
+    if (f == NULL) {
+        printf("File doesn't exist.\n");
+    }
+
+    int count = 0;
+    printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-20s  | %-15s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","NAME","GENERE","AUTHOR","ID","PRICE","COUNT");
+    while (fread(&B_R, sizeof(Book), 1, f)) {
+        if (strcasecmp(B_R.B_name,name) == 0) {
+            count++;
+            printf(" %-20s| %-15s  | %-13s | %-5d | %-8d | %-5d\n",B_R.B_name,B_R.Genere,B_R.Author,B_R.Book_ID,B_R.price,B_R.B_count);      
+        }
+    }
+
+    if (count == 0) {
+        printf("Sorry, Not found\n");
+    }
+
+    fclose(f);
+}
+
+
+
+
+
+
 
 int main() {
    
@@ -127,10 +156,10 @@ int main() {
     // Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
     // B_Register(B);
 
-    char genere[50];
-    printf("Enter genere : ");
-    scanf("%s", genere);
-    get_book_by_genere(genere);
+    char name[50];
+    printf("Enter book name : ");
+    scanf(" %[^\n]", name);
+   get_book_by_name(name);
 
     //get_book_by_author(author);
     //int temp =get_ID();
