@@ -1,21 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
-typedef struct {
-    int hr;
-    int min;
-    int sec;
-}Time;
-typedef struct{
-    int day;
-    int month;
-    int year;
-}Date;
-typedef struct{
-    int id;
-    int amount;
-    Time time;
-    Date date;
-} Transaction;
+#include "../config.h"
+/* stdio/stdlib still required for IO and memory operations */
+#include <stdio.h>
+#include <stdlib.h>
 
 void logTransation(Transaction t){
     FILE *f;

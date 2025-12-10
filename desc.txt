@@ -1,4 +1,46 @@
-open repo
-create a folder
-otherwise open your folder
-upload your files.
+Library Management System — CLI
+------------------------------
+A small command-line toolset to manage library records.
+Features: register and retrieve books and candidates, search by name,
+author or genre, and list records. Data is stored as binary files under
+`./classes/project/librarymanagement`.
+
+Quick start — run instructions
+-----------------------------
+1. Prerequisites
+	 - Install a C compiler (GCC/MinGW on Windows).
+	 - Make sure `gcc` is available in PowerShell or use the full compiler path.
+
+2. Build and run (Book example)
+	 - From the repository root run:
+		 ```powershell
+		 cd ./classes/project/librarymanagement/Book
+		 gcc book.c -o book.exe
+		 .\book.exe
+		 ```
+
+3. Build and run (Candidate example)
+	 - From the repository root run:
+		 ```powershell
+		 cd ./classes/project/librarymanagement/Candidate
+		 gcc candidate.c -o candidate.exe
+		 .\candidate.exe
+		 ```
+
+4. Using the VS Code build task
+	 - Open a source file (e.g., `book.c`) in VS Code and run the
+		 `C/C++: gcc.exe build active file` task. The executable appears next to
+		 the source file.
+
+5. Data files
+	 - Programs read/write binary files (e.g., `Book.dat`, `candidate.dat`) in
+		 the same directory where the executable runs.
+
+6. Troubleshooting
+	 - If `gcc` is not found, add the compiler's `bin` folder to PATH or use
+		 the absolute compiler path.
+	 - If file I/O fails, verify folder write permissions and the working
+		 directory.
+
+If you want, I can compile and run `book.c` or `candidate.c` and show the
+output — tell me which one.

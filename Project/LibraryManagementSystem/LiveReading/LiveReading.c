@@ -1,24 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
-typedef struct{
-   int hr;
-   int min;
-   int sec;
-}Time;
-typedef struct{
-    int day;
-    int month;
-    int year;
-}Date;
+#include "../config.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-
-typedef struct {
-    int C_ID;
-    int B_ID;
-    Time entry;
-    Time exit;
-    Date date;
-}LiveReading;
 void initiate(LiveReading lr){
     FILE *f;
     f = fopen("LiveReading.dat","ab");  //ab = "Appending in Binory..."
