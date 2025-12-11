@@ -55,4 +55,13 @@ typedef struct {
     Date date;
 } LiveReading;
 
+typedef struct {
+    int C_ID;
+    int B_ID;
+    Date DOI;
+    Date DOR;
+    /* data */
+}BookKeeping;
+
+
 #endif /* CONFIG_H */
