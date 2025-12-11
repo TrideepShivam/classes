@@ -4,7 +4,7 @@
 
 void initiate(LiveReading lr){
     FILE *f;
-    f = fopen("LiveReading.dat","ab");  //ab = "Appending in Binory..."
+    f = fopen("data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
        if(f==NULL){
         printf("File doesn't exist.");
     } 
@@ -15,7 +15,7 @@ void initiate(LiveReading lr){
 void showLiveRreading(){
     FILE *f;
     LiveReading lr;
-    f =fopen("LiveReading.dat","rb"); //rb ="Reading in Binory..."
+    f =fopen("data/LiveReading.dat","rb"); //rb ="Reading in Binory..."
     if(f==NULL){
         printf("File not read.");
     }

@@ -2,7 +2,7 @@
 
 void registerCandidate(Candidate c){
     FILE *fp;
-    fp=fopen("candidate.dat", "ab");// w for write, b for binary, a for append
+    fp=fopen("data/candidate.dat", "ab");// w for write, b for binary, a for append
     if(fp==NULL){
         printf("File not found");
     }
@@ -13,7 +13,7 @@ void registerCandidate(Candidate c){
 void showCandidate( ){
     Candidate c;
     FILE *fp;
-    fp=fopen("candidate.dat","rb");
+    fp=fopen("data/candidate.dat","rb");
     if(fp==NULL){
          printf("File not found");
     }
@@ -26,7 +26,7 @@ void showCandidate( ){
 Candidate getCandidateById(int id){
     Candidate c;
     FILE *fp;
-    fp=fopen("candidate.dat","rb");
+    fp=fopen("data/candidate.dat","rb");
     if(fp==NULL){
          printf("File not found");
     }
