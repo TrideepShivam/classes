@@ -1,7 +1,6 @@
-#include "../config.h"
-/* stdio/stdlib still required for IO and memory operations */
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include"../config.h"
 
 void logTransation(Transaction t){
     FILE *f;
@@ -16,14 +15,21 @@ void logTransation(Transaction t){
 
 void getAllTransaction(){
     FILE *f;
+    Transaction t;
     f = fopen("Transaction.dat","rb");
     if (f==NULL){
         printf("File does not exist.");
     }
-    
+    printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
+    while (fread(&t, sizeof(Transaction), 1, f)) {
+        printf("%-5d | %-6d | %-2d:%-2d:%-2d | %-2d/%-2d/%-4d\n",t.id,t.amount,t.time.hr,t.time.min,t.time.sec,t.date.day,t.date.month,t.date.year);      
+    }
+    fclose(f);
 }
+
 void main(){
-    Transaction t = {1,340,{9,50,30},{12,12,2012}};
-    logTransation(t);
+    // Transaction t = {1,340,{9,50,30},{12,12,2012}};
+    // logTransation(t);
+    getAllTransaction();
 }
 
