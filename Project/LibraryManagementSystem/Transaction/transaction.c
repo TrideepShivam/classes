@@ -4,7 +4,7 @@
 
 void logTransation(Transaction t){
     FILE *f;
-    f = fopen("data/Transaction.dat","ab");
+    f = fopen("../data/Transaction.dat","ab");
     if (f==NULL){
         printf("File does not exist.");
     }
@@ -16,7 +16,7 @@ void logTransation(Transaction t){
 void getAllTransaction(){
     FILE *f;
     Transaction t;
-    f = fopen("data/Transaction.dat","rb");
+    f = fopen("../data/Transaction.dat","rb");
     if (f==NULL){
         printf("File does not exist.");
     }
