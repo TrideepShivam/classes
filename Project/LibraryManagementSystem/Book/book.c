@@ -5,12 +5,12 @@
 void B_Register ( Book B_R){
 
     FILE *f;
-        f = fopen("../data/Book.dat","ab");  //wb = "Wrintig in Binory..."
-       if(f==NULL){
+    f = fopen("../data/Book.dat","ab");  //wb = "Wrintig in Binory..."
+    if(f==NULL){
         printf("File doesn't exist.");
     }
-     
-     fwrite(&B_R, sizeof(Book ), 1, f);
+    B_R.Book_ID = get_ID();
+    fwrite(&B_R, sizeof(Book ), 1, f);
 
     fclose(f);
         printf("Data written successfully!\n");
@@ -73,7 +73,7 @@ int get_ID() {
         printf("File doesn't exist.\n");
         return -1;
     }
-    int temp;
+    int temp=0;
     while (fread(&B_R, sizeof(Book), 1, f)){
         temp=B_R.Book_ID;
     }
@@ -177,12 +177,12 @@ Book Showall_Book (){
 
 
 
-/*
+
 int main() {
    
     //Book B = {"Programming with C++", "Shivam", 1749, "Programming", 2, 26};
-    // Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
-    // B_Register(B);
+    Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
+    B_Register(B);
 
     //int ID,count;
     //printf("Enter book ID and count update value : ");
@@ -197,5 +197,5 @@ int main() {
     //return 0;
     Showall_Book ();
 }
-*/
+
 
