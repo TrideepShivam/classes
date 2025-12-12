@@ -28,3 +28,8 @@
     and rewriting the record.
 9. Showall_Book ();
     this fuction will  print all book details ..
+10. is_available(void);
+    this function take the book id and find that id in book.dat .
+    after finding its check tha count of book if the book count is 
+    greater than 0 its print the book is available otherwise print
+    book is not available.   

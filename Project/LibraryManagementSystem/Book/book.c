@@ -174,19 +174,41 @@ Book Showall_Book (){
 
 }
 
+//function for looking book is avaliable or not...
+void is_available(int id){
+     Book B_R;
+    FILE *f;
+        f = fopen("../data/Book.dat","rb");  //rb = "readin into Binory..."
+       if(f==NULL){
+        printf("File doesn't exist.");
+    }
+    while(fread(&B_R, sizeof(Book), 1, f)){
+        if(B_R.Book_ID==id){
+            if(B_R.Book_ID>0){
+                printf("Book is available.\n");
+            }else {
+                printf("Book is not available.\n");
+            }
+        }
+            
+
+    }
+}
 
 
 
 
-int main() {
+
+/*int main() {
    
     //Book B = {"Programming with C++", "Shivam", 1749, "Programming", 2, 26};
-    Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
-    B_Register(B);
+    //Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
+    //B_Register(B);
 
-    //int ID,count;
-    //printf("Enter book ID and count update value : ");
-    //scanf("%d %d",&ID,&count);
+    int ID;
+    printf("Enter book ID  : ");
+    scanf(" %d",&ID);
+    is_available(ID);
     //update_book_count(ID,count);
 
    //get_book_by_name("Programming with C++");
@@ -196,6 +218,7 @@ int main() {
     //printf("%d",temp);
     //return 0;
     Showall_Book ();
-}
+
+}*/
 
 
