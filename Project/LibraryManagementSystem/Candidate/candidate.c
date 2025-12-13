@@ -39,7 +39,7 @@ Candidate getCandidateById(int id){
     c.id = -1;
     return c;
 }
-void main(){
+/* void main(){
     Candidate c = {2, "Isha Singh", "9878907890", "isha.singh@gmail.com", {15, 12, 2020}, {2, 2, 2023}};
     registerCandidate(c);
     showCandidate();
@@ -49,4 +49,4 @@ void main(){
     // }else{
     //     printf("not found");
     // }
-}
+}*/

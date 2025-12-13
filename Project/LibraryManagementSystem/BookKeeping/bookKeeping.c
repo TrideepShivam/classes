@@ -11,9 +11,9 @@ void keep(BookKeeping bk){
     printf("Data written successfully!\n");
 }
 
-void main(){
+/* void main(){
     // BookKeeping bk = {1,2,{12,12,2023},{19,12,2023}};
     // keep(bk);
-}
+}*/
 
 
