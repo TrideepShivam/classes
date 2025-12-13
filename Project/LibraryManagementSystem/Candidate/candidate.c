@@ -2,9 +2,10 @@
 
 void registerCandidate(Candidate c){
     FILE *fp;
-        fp=fopen("../data/candidate.dat", "ab");// w for write, b for binary, a for append
+        fp=fopen("data/candidate.dat", "ab");// w for write, b for binary, a for append
     if(fp==NULL){
-        printf("File not found");
+        printf("File not found\n");
+        return;
     }
     fwrite(&c, sizeof(Candidate), 1, fp);
     fclose(fp);
@@ -13,10 +14,11 @@ void registerCandidate(Candidate c){
 void showCandidate( ){
     Candidate c;
     FILE *fp;
-        fp=fopen("../data/candidate.dat","rb");
-    if(fp==NULL){
-         printf("File not found");
-    }
+           fp=fopen("data/candidate.dat","rb");
+        if(fp==NULL){
+            printf("File not found\n");
+            return;
+        }
     printf("CANDIDATE DETAILS :\n-------------------------------------------------------------------------------------------\n%-4s | %-20s | %-10s | %-20s | %-13s | %-10s\n-------------------------------------------------------------------------------------------\n","ID","NAME","CONTACT","EMAIL","JOINING DATE","EXIT DATE");
     while(fread(&c,sizeof(Candidate),1,fp)==1){
         printf("%-4d | %-20s | %-10s | %-20s | %-2d/%-2d/%-7d | %-2d/%-2d/%-4d \n",c.id,c.Name,c.contact,c.email,c.doj.day,c.doj.month,c.doj.year,c.doe.day,c.doe.month,c.doe.year);
@@ -26,10 +28,12 @@ void showCandidate( ){
 Candidate getCandidateById(int id){
     Candidate c;
     FILE *fp;
-        fp=fopen("../data/candidate.dat","rb");
-    if(fp==NULL){
-         printf("File not found");
-    }
+           fp=fopen("data/candidate.dat","rb");
+        if(fp==NULL){
+            printf("File not found\n");
+            c.id = -1;
+            return c;
+        }
     while(fread(&c,sizeof(Candidate),1,fp)==1){
         if(c.id==id){
             return c;

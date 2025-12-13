@@ -2,9 +2,10 @@
 #include <stdio.h>
 void keep(BookKeeping bk){
     FILE *f;
-    f = fopen("../data/BookKeeping.dat","ab");  //ab = "Appending in Binory..."
+    f = fopen("data/BookKeeping.dat","ab");  //ab = "Appending in Binory..."
     if(f==NULL){
-        printf("File doesn't exist.");
+        printf("File doesn't exist.\n");
+        return;
     } 
     fwrite(&bk, sizeof(BookKeeping ), 1, f);
     fclose(f);

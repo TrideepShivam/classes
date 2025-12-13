@@ -5,9 +5,10 @@
 void B_Register ( Book B_R){
 
     FILE *f;
-    f = fopen("../data/Book.dat","ab");  //wb = "Wrintig in Binory..."
+    f = fopen("data/Book.dat","ab");  //wb = "Wrintig in Binory..."
     if(f==NULL){
-        printf("File doesn't exist.");
+        printf("File doesn't exist.\n");
+        return;
     }
     B_R.Book_ID = get_ID();
     fwrite(&B_R, sizeof(Book ), 1, f);
@@ -22,9 +23,11 @@ void B_Register ( Book B_R){
 Book B_Retrive (int id){
     Book B_R;
     FILE *f;
-        f = fopen("../data/Book.dat","rb");  //rb = "readin into Binory..."
+        f = fopen("data/Book.dat","rb");  //rb = "readin into Binory..."
        if(f==NULL){
-        printf("File doesn't exist.");
+        Book nullBook = {"","",-1,"",-1,-1};
+        printf("File doesn't exist.\n");
+        return nullBook;
     }
     while(fread(&B_R, sizeof(Book), 1, f)){
         if(B_R.Book_ID == id){
@@ -41,7 +44,7 @@ Book B_Retrive (int id){
 // Function to print books by author
 void get_book_by_author(const char *author) {
     Book B_R;
-        FILE *f = fopen("../data/Book.dat", "rb");  // rb = read binary
+        FILE *f = fopen("data/Book.dat", "rb");  // rb = read binary
 
     if (f == NULL) {
         printf("File doesn't exist.\n");
@@ -67,12 +70,13 @@ void get_book_by_author(const char *author) {
 // Function for get last id from Book.dat and print the ID after addining 1 in that ID.........
 int get_ID() {
     Book B_R;
-        FILE *f = fopen("../data/Book.dat", "rb");  // rb = read binary
+        FILE *f = fopen("data/Book.dat", "rb");  // rb = read binary
 
-    if (f == NULL) {
-        printf("File doesn't exist.\n");
-        return -1;
-    }
+        if (f == NULL) {
+            printf("File doesn't exist.\n");
+            return -1;
+        }
+    
     int temp=0;
     while (fread(&B_R, sizeof(Book), 1, f)){
         temp=B_R.Book_ID;
@@ -84,11 +88,12 @@ int get_ID() {
 // Function to print books by genere
 void get_book_by_genere(const char *genere) {
     Book B_R;
-        FILE *f = fopen("../data/Book.dat", "rb");  // rb = read binary
+        FILE *f = fopen("data/Book.dat", "rb");  // rb = read binary
 
-    if (f == NULL) {
-        printf("File doesn't exist.\n");
-    }
+        if (f == NULL) {
+            printf("File doesn't exist.\n");
+            return;
+        }
 
     int count = 0;
     printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-15s  | %-20s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","GENERE","NAME","AUTHOR","ID","PRICE","COUNT");
@@ -110,11 +115,12 @@ void get_book_by_genere(const char *genere) {
 // Function to print books by name
 void get_book_by_name(const char *name) {
     Book B_R;
-        FILE *f = fopen("../data/Book.dat", "rb");  // rb = read binary
+        FILE *f = fopen("data/Book.dat", "rb");  // rb = read binary
 
-    if (f == NULL) {
-        printf("File doesn't exist.\n");
-    }
+        if (f == NULL) {
+            printf("File doesn't exist.\n");
+            return;
+        }
 
     int count = 0;
     printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-20s  | %-15s | %-13s |%-5s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","NAME","GENERE","AUTHOR","ID","PRICE","COUNT");
@@ -135,11 +141,12 @@ void get_book_by_name(const char *name) {
 //function for update count of book with same name..same author..same genere...
 void update_book_count(int ID ,int count) {
     Book B_R;
-        FILE *f = fopen("../data/Book.dat", "rb+");  // rb = read binary and write binary
+        FILE *f = fopen("data/Book.dat", "rb+");  // rb = read binary and write binary
 
-    if (f == NULL) {
-        printf("File doesn't exist.\n");
-    }
+        if (f == NULL) {
+            printf("File doesn't exist.\n");
+            return;
+        }
 
     while (fread(&B_R, sizeof(Book), 1, f)) {
         if(ID == B_R.Book_ID){
@@ -161,9 +168,11 @@ void update_book_count(int ID ,int count) {
 Book Showall_Book (){
     Book B_R;
     FILE *f;
-        f = fopen("../data/Book.dat","rb");  //rb = "readin into Binory..."
+        f = fopen("data/Book.dat","rb");  //rb = "readin into Binory..."
        if(f==NULL){
-        printf("File doesn't exist.");
+        printf("File doesn't exist.\n");
+        Book nullBook = {"","",-1,"",-1,-1};
+        return nullBook;
     }
     printf("BOOK DETAILS :\n---------------------------------------------------------------------------------\n%-5s | %-20s | %-13s | %-15s | %-8s | %-5s\n---------------------------------------------------------------------------------\n","ID","NAME","AUTHOR","GENERE","PRICE","COUNT");
     while(fread(&B_R, sizeof(Book), 1, f)){
@@ -178,9 +187,10 @@ Book Showall_Book (){
 int is_available(int id){
      Book B_R;
     FILE *f;
-        f = fopen("../data/Book.dat","rb");  //rb = "readin into Binory..."
+        f = fopen("data/Book.dat","rb");  //rb = "readin into Binory..."
        if(f==NULL){
-        printf("File doesn't exist.");
+        printf("File doesn't exist.\n");
+        return 0;
     }
     while(fread(&B_R, sizeof(Book), 1, f)){
         if(B_R.Book_ID==id){

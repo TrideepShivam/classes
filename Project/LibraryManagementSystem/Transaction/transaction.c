@@ -4,9 +4,10 @@
 
 void logTransation(Transaction t){
     FILE *f;
-    f = fopen("../data/Transaction.dat","ab");
+    f = fopen("data/Transaction.dat","ab");
     if (f==NULL){
-        printf("File does not exist.");
+        printf("File does not exist.\n");
+        return;
     }
     fwrite(&t,sizeof(Transaction),1,f);
     fclose(f);
@@ -16,9 +17,10 @@ void logTransation(Transaction t){
 void getAllTransaction(){
     FILE *f;
     Transaction t;
-    f = fopen("../data/Transaction.dat","rb");
+    f = fopen("data/Transaction.dat","rb");
     if (f==NULL){
-        printf("File does not exist.");
+        printf("File does not exist.\n");
+        return;
     }
     printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
     while (fread(&t, sizeof(Transaction), 1, f)) {
@@ -29,10 +31,11 @@ void getAllTransaction(){
 void getTransactionById(int id){
     Transaction t;
     FILE *fp;
-    fp=fopen("../data/Transaction.dat","rb");
-    if(fp==NULL){
-         printf("File not found");
-    }
+        fp=fopen("data/Transaction.dat","rb");
+        if(fp==NULL){
+            printf("File not found\n");
+            return;
+        }
     while(fread(&t,sizeof(Transaction),1,fp)==1){
         if(t.id==id){
             printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");

@@ -5,9 +5,10 @@
 
 void initiate(LiveReading lr){
     FILE *f;
-    f = fopen("../data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
+    f = fopen("data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
        if(f==NULL){
-        printf("File doesn't exist.");
+        printf("File doesn't exist.\n");
+        return;
     } 
     fwrite(&lr, sizeof(LiveReading ), 1, f);
     fclose(f);
@@ -16,9 +17,10 @@ void initiate(LiveReading lr){
 void showLiveRreading(){
     FILE *f;
     LiveReading lr;
-    f =fopen("../data/LiveReading.dat","rb"); //rb ="Reading in Binory..."
+    f =fopen("data/LiveReading.dat","rb"); //rb ="Reading in Binory..."
     if(f==NULL){
-        printf("File not read.");
+        printf("File not read.\n");
+        return;
     }
     while(fread(&lr,sizeof(LiveReading),1,f)==1){
         // Book b = B_Retrive(26);
