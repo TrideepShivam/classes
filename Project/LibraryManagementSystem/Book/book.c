@@ -23,7 +23,7 @@ void B_Register ( Book B_R){
 Book B_Retrive (int id){
     Book B_R;
     FILE *f;
-        f = fopen("data/Book.dat","rb");  //rb = "readin into Binory..."
+        f = fopen("../data/Book.dat","rb");  //rb = "readin into Binory..."
        if(f==NULL){
         Book nullBook = {"","",-1,"",-1,-1};
         printf("File doesn't exist.\n");
