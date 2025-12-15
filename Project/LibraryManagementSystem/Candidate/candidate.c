@@ -28,7 +28,7 @@ void showCandidate( ){
 Candidate getCandidateById(int id){
     Candidate c;
     FILE *fp;
-           fp=fopen("data/candidate.dat","rb");
+           fp=fopen("../data/candidate.dat","rb");
         if(fp==NULL){
             printf("File not found\n");
             c.id = -1;
@@ -36,6 +36,24 @@ Candidate getCandidateById(int id){
         }
     while(fread(&c,sizeof(Candidate),1,fp)==1){
         if(c.id==id){
+            return c;
+        }
+    }
+    fclose(fp);
+    c.id = -1;
+    return c;
+}
+Candidate getCandidateByContact(char *Contact){
+    Candidate c;
+    FILE *fp;
+    fp=fopen("../data/candidate.dat","rb");
+    if(fp==NULL){
+        printf("File not found");
+        c.id = -1;
+        return c;
+    }
+    while(fread(&c,sizeof(Candidate),1,fp)==1){
+        if(strcmp(Contact,c.contact)==0){
             return c;
         }
     }

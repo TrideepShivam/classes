@@ -12,5 +12,6 @@
 void registerCandidate(Candidate c);
 void showCandidate(void);
 Candidate getCandidateById(int id);
+Candidate getCandidateByContact(char *Contact);
 
 #endif /* CANDIDATE_H */
