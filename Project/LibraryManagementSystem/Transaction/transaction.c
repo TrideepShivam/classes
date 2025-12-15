@@ -49,12 +49,31 @@ void getTransactionById(int id){
 }
 void getTransactionByDate(Date date){
     //code
+    Transaction t;
+    FILE *fp;
+        fp=fopen("../data/Transaction.dat","rb");
+        if(fp==NULL){
+            printf("File not found\n");
+            return;
+        }
+    while(fread(&t,sizeof(Transaction),1,fp)==1){
+        if(t.date.day==date.day&&t.date.month==date.month&&t.date.year==date.year){
+            printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
+            printf("%-5d | %-6d | %-2d:%-2d:%-2d | %-2d/%-2d/%-4d\n",t.id,t.amount,t.time.hr,t.time.min,t.time.sec,t.date.day,t.date.month,t.date.year);
+            break;
+        }
+    }
+    if(fread(&t,sizeof(Transaction),1,fp)==0){
+        printf("invalid id\n");
+    }
 }
 
-// void main(){
-//     Transaction t = {2,540,{9,10,30},{14,12,2015}};
-//     logTransation(t);
-//     //getAllTransaction();
-//     getTransactionById(2);
+//  void main(){
+// //     Transaction t = {2,540,{9,10,30},{14,12,2015}};
+// //     logTransation(t);
+// //     //getAllTransaction();
+// //     getTransactionById(2);
+// Date d = {12,12,2012};
+//     getTransactionByDate(d);
 // }
 
