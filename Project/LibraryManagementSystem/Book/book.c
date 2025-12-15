@@ -196,8 +196,8 @@ int is_available(int id){
         if(B_R.Book_ID==id){
                 return B_R.B_count;
         }    
-
     }
+    
 }
 
 
