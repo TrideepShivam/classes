@@ -14,7 +14,7 @@ void registerCandidate(Candidate c){
 void showCandidate( ){
     Candidate c;
     FILE *fp;
-           fp=fopen("data/candidate.dat","rb");
+           fp=fopen("../data/candidate.dat","rb");
         if(fp==NULL){
             printf("File not found\n");
             return;
@@ -61,14 +61,14 @@ Candidate getCandidateByContact(char *Contact){
     c.id = -1;
     return c;
 }
-/* void main(){
-    Candidate c = {2, "Isha Singh", "9878907890", "isha.singh@gmail.com", {15, 12, 2020}, {2, 2, 2023}};
-    registerCandidate(c);
-    showCandidate();
-    // Candidate c = getCandidateById(1);
-    // if(c.id !=-1){
-    //     printf("Name: %s",c.Name);
-    // }else{
-    //     printf("not found");
-    // }
-}*/
+// void main(){
+//     Candidate c = {102, "Shweta", "9786786890", "shweta.singh@gmail.com", {25, 2, 2024}, {12, 10, 2023}};
+//     registerCandidate(c);
+//     showCandidate();
+//     // Candidate c = getCandidateById(1);
+//     // if(c.id !=-1){
+//     //     printf("Name: %s",c.Name);
+//     // }else{
+//     //     printf("not found");
+//     // }
+// }
