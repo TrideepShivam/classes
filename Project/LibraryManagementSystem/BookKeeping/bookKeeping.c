@@ -3,7 +3,7 @@
 #include"../Book/book.h"    
 void keep(BookKeeping bk){
     FILE *f;
-    f = fopen("../data/BookKeeping.dat","ab");  //ab = "Appending in Binory..."
+    f = fopen("data/BookKeeping.dat","ab");  //ab = "Appending in Binory..."
     if(f==NULL){
         printf("File doesn't exist.\n");
         return;
@@ -13,7 +13,7 @@ void keep(BookKeeping bk){
     printf("Data written successfully!\n");
 }
 void showBookKeepingRecords(){
-	FILE *f = fopen("../data/BookKeeping.dat","rb");
+    FILE *f = fopen("data/BookKeeping.dat","rb");
 	if(f==NULL){
 		printf("No borrow/return records found.\n");
 		return;
@@ -34,7 +34,7 @@ void showBookKeepingRecords(){
 	fclose(f);
 }
 BookKeeping getborrowbyC_ID(int C_ID){
-	FILE *f = fopen("../data/BookKeeping.dat","rb");
+    FILE *f = fopen("data/BookKeeping.dat","rb");
 	if(f==NULL){
 		printf("No borrow/return records found.\n");
 		return;
@@ -62,6 +62,7 @@ BookKeeping getborrowbyC_ID(int C_ID){
 }
 
 
+/*
 void main(){
     // BookKeeping bk = {1,2,{12,12,2023},{19,12,2023}};
     // keep(bk);
@@ -72,5 +73,6 @@ void main(){
     getborrowbyC_ID(id);
 
 }
+*/
 
  
