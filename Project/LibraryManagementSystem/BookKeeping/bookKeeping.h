@@ -6,5 +6,7 @@
 
 /* BookKeeping-related function prototypes */
 void keep(BookKeeping bk);
-BookKeeping getborrowbyC_ID(int C_ID);
+void getborrowbyC_ID(int C_ID);
+void showBookKeepingRecords();
+void getborrowbyB_ID(int B_ID);
 #endif /* BOOKKEEPING_H */

@@ -216,28 +216,28 @@ int is_book_ID_valid(int ID){
     return 0;
 }
 
-int main() {
+// int main() {
    
-    //Book B = {"Programming with C++", "Shivam", 1749, "Programming", 2, 26};
-    //Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
-    //B_Register(B);
+//     //Book B = {"Programming with C++", "Shivam", 1749, "Programming", 2, 26};
+//     //Book B = {"Fundamentals", "Shivam", 343, "Inspiration", 1, 25};
+//     //B_Register(B);
 
-    int ID;
-    printf("Enter book ID  : ");
-    scanf(" %d",&ID);
-    //is_book_ID_valid(ID);
+//     int ID;
+//     printf("Enter book ID  : ");
+//     scanf(" %d",&ID);
+//     //is_book_ID_valid(ID);
 
-    printf("%d",is_book_ID_valid(ID));
-    //update_book_count(ID,count);
+//     printf("%d",is_book_ID_valid(ID));
+//     //update_book_count(ID,count);
 
-   //get_book_by_name("Programming with C++");
+//    //get_book_by_name("Programming with C++");
 
-    //get_book_by_author(author);
-    //int temp =get_ID();
-    //printf("%d",temp);
-    //return 0;
-    Showall_Book ();
+//     //get_book_by_author(author);
+//     //int temp =get_ID();
+//     //printf("%d",temp);
+//     //return 0;
+//     Showall_Book ();
 
-}
+// }
 
 
