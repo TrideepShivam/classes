@@ -28,6 +28,9 @@
     and rewriting the record.
 9. Showall_Book ();
     this fuction will  print all book details ..
-10. is_available(void);
+10.is_available(void);
     this function take the book id and find that id in book.dat .
     after finding its return the book count.
+11.int is_book_ID_valid(int ID);
+    this function take a book id and check in file Book.dat if
+    book id is valid its return 1 otherwise return 0. 
