@@ -9,3 +9,10 @@
 
 3. Candidate getCandidateById(int id): 
         This function is used to return candidate structure after comparing the given ID.
+
+4. Candidate getCandidateByContact( ):
+        This function is used to return the candidate detail from the given contact.
+
+5. getCandidateID( ):
+         This function is used check last ID then they increase +1 for next and return.
+    

@@ -81,9 +81,7 @@ int get_ID() {
     while (fread(&B_R, sizeof(Book), 1, f)){
         temp=B_R.Book_ID;
     }
-        
     return temp+1;
-
 }
 // Function to print books by genere
 void get_book_by_genere(const char *genere) {
@@ -196,8 +194,8 @@ int is_available(int id){
         if(B_R.Book_ID==id){
                 return B_R.B_count;
         }    
+
     }
-    
 }
 
 

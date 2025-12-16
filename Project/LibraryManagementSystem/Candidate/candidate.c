@@ -1,5 +1,21 @@
 #include "candidate.h"
 
+int getCandidateID() {
+    Candidate c;
+        FILE *f = fopen("../data/Candidate.dat", "rb");  // rb = read binary
+
+        if (f == NULL) {
+            printf("File doesn't exist.\n");
+            return -1;
+        }
+    
+    int temp=0;
+    while (fread(&c, sizeof(Candidate), 1, f)){
+        temp=c.id;
+    }
+    return temp+1;
+}
+
 void registerCandidate(Candidate c){
     FILE *fp;
         fp=fopen("../data/candidate.dat", "ab");// w for write, b for binary, a for append
@@ -7,6 +23,7 @@ void registerCandidate(Candidate c){
         printf("File not found\n");
         return;
     }
+    c.id = getCandidateID();
     fwrite(&c, sizeof(Candidate), 1, fp);
     fclose(fp);
     printf("Data written successfully!\n");
@@ -62,7 +79,7 @@ Candidate getCandidateByContact(char *Contact){
     return c;
 }
 // void main(){
-//     Candidate c = {102, "Shweta", "9786786890", "shweta.singh@gmail.com", {25, 2, 2024}, {12, 10, 2023}};
+//     Candidate c = {101, "lipika", "9876543219", "lipika.singh@gmail.com", {25, 2, 2024}, {0, 0, 0000}};
 //     registerCandidate(c);
 //     showCandidate();
 //     // Candidate c = getCandidateById(1);
