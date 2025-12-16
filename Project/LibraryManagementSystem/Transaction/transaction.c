@@ -2,13 +2,15 @@
 #include<stdlib.h>
 #include"../config.h"
 
-void logTransation(Transaction t){
+void logTransaction(Transaction t){
     FILE *f;
     f = fopen("../data/Transaction.dat","ab");
     if (f==NULL){
         printf("File does not exist.\n");
         return;
     }
+    //write a code to get the last id and add it into t structure after increament +1.
+
     fwrite(&t,sizeof(Transaction),1,f);
     fclose(f);
     printf("Data written successfully!\n");
@@ -16,7 +18,7 @@ void logTransation(Transaction t){
 void getAllTransaction(){
     FILE *f;
     Transaction t;
-    f = fopen("data/Transaction.dat","rb");
+    f = fopen("../data/Transaction.dat","rb");
     if (f==NULL){
         printf("File does not exist.\n");
         return;
@@ -69,11 +71,11 @@ void getTransactionByDate(Date date){
 }
 
 //  void main(){
-// //     Transaction t = {2,540,{9,10,30},{14,12,2015}};
-// //     logTransation(t);
-// //     //getAllTransaction();
+//     Transaction t = {2,540,{9,10,30},{14,12,2015}};
+//     logTransation(t);
+//     getAllTransaction();
 // //     getTransactionById(2);
-// Date d = {12,12,2012};
-//     getTransactionByDate(d);
+//     //Date d = {12,12,2012};
+//     //getTransactionByDate(d);
 // }
 
