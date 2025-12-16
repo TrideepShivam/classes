@@ -5,7 +5,7 @@
 #include "../config.h"
 
 /* Transaction-related function prototypes */
-void logTransation(Transaction t);
+void logTransaction(Transaction t);
 void getAllTransaction(void);
 void getTransactionById(int id);
 void getTransactionByDate(Date date);
