@@ -4,13 +4,18 @@
 
 void logTransaction(Transaction t){
     FILE *f;
-    f = fopen("../data/Transaction.dat","ab");
+    f = fopen("../data/Transaction.dat","ab+");
     if (f==NULL){
         printf("File does not exist.\n");
         return;
     }
-    //write a code to get the last id and add it into t structure after increament +1.
-
+    //write a code to get the last id and add it into t structure after increament ;
+        
+        int lastId=0;
+        while (fread(&t, sizeof(Transaction), 1, f)){
+            lastId=t.id;
+        }
+    t.id = lastId+1;
     fwrite(&t,sizeof(Transaction),1,f);
     fclose(f);
     printf("Data written successfully!\n");
@@ -70,12 +75,12 @@ void getTransactionByDate(Date date){
     }
 }
 
-//  void main(){
-//     Transaction t = {2,540,{9,10,30},{14,12,2015}};
-//     logTransation(t);
-//     getAllTransaction();
-// //     getTransactionById(2);
-//     //Date d = {12,12,2012};
-//     //getTransactionByDate(d);
-// }
+ void main(){
+    Transaction t = {2,500,{11,10,00},{14,12,2019}};
+    logTransaction(t);
+    getAllTransaction();
+//     getTransactionById(2);
+    //Date d = {12,12,2012};
+    //getTransactionByDate(d);
+}
 
