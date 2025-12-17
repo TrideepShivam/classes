@@ -5,7 +5,7 @@
 #include "../Candidate/candidate.h"
 void initiate(LiveReading lr){
     FILE *f;
-    f = fopen("../data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
+    f = fopen("data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
        if(f==NULL){
         printf("File doesn't exist.\n");
         return;
@@ -17,7 +17,7 @@ void initiate(LiveReading lr){
 void showLiveRreading(){
     FILE *f;
     LiveReading lr;
-    f =fopen("../data/LiveReading.dat","rb"); //rb ="Reading in Binory..."
+    f =fopen("data/LiveReading.dat","rb"); //rb ="Reading in Binory..."
     if(f==NULL){
         printf("File not read.\n");
         return;
@@ -30,8 +30,8 @@ void showLiveRreading(){
     }
 }
 
-void main(){
-    //LiveReading lr={102,2,{10,00,0},{12,0,0},{15,8,2025}};
-    //initiate(lr);
-    showLiveRreading();
-}
+// void main(){
+//     LiveReading lr={102,2,{10,40,0},{2,10,50},{15,2,2024}};
+//     initiate(lr);
+//     showLiveRreading();
+// }

@@ -2,7 +2,7 @@
 
 int getCandidateID() {
     Candidate c;
-        FILE *f = fopen("../data/candidate.dat", "rb");  // rb = read binary
+        FILE *f = fopen("data/candidate.dat", "rb");  // rb = read binary
 
         if (f == NULL) {
             printf("File doesn't exist.\n");
@@ -18,7 +18,7 @@ int getCandidateID() {
 
 void registerCandidate(Candidate c){
     FILE *fp;
-        fp=fopen("../data/candidate.dat", "ab");// w for write, b for binary, a for append
+        fp=fopen("data/candidate.dat", "ab");// w for write, b for binary, a for append
     if(fp==NULL){
         printf("File not found\n");
         return;
@@ -31,7 +31,7 @@ void registerCandidate(Candidate c){
 void showCandidate( ){
     Candidate c;
     FILE *fp;
-           fp=fopen("../data/candidate.dat","rb");
+           fp=fopen("data/candidate.dat","rb");
         if(fp==NULL){
             printf("File not found\n");
             return;
@@ -45,7 +45,7 @@ void showCandidate( ){
 Candidate getCandidateById(int id){
     Candidate c;
     FILE *fp;
-           fp=fopen("../data/candidate.dat","rb");
+           fp=fopen("data/candidate.dat","rb");
         if(fp==NULL){
             printf("File not found\n");
             c.id = -1;
@@ -63,7 +63,7 @@ Candidate getCandidateById(int id){
 Candidate getCandidateByContact(char *Contact){
     Candidate c;
     FILE *fp;
-    fp=fopen("../data/candidate.dat","rb");
+    fp=fopen("data/candidate.dat","rb");
     if(fp==NULL){
         printf("File not found");
         c.id = -1;
