@@ -44,7 +44,7 @@ void getTransactionById(int id){
         }
     while(fread(&t,sizeof(Transaction),1,fp)==1){
         if(t.id==id){
-            printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
+            printf("TRANSACTION DETAILS :\n--------------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------------\n","ID","AMOUNT","TIME","DATE");
             printf("%-5d | %-6d | %-2d:%-2d:%-2d | %-2d/%-2d/%-4d\n",t.id,t.amount,t.time.hr,t.time.min,t.time.sec,t.date.day,t.date.month,t.date.year);
             break;
         }
@@ -65,7 +65,7 @@ void getTransactionByDate(Date date){
     while(fread(&t,sizeof(Transaction),1,fp)==1){
         if(t.date.day==date.day&&t.date.month==date.month&&t.date.year==date.year){
             isFound =1;
-            printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
+            printf("TRANSACTION DETAILS :\n---------------------------------------------\n%-5s | %-6s | %-10s | %-12s\n-----------------------------------------------\n","ID","AMOUNT","TIME","DATE");
             printf("%-5d | %-6d | %-2d:%-2d:%-2d | %-2d/%-2d/%-4d\n",t.id,t.amount,t.time.hr,t.time.min,t.time.sec,t.date.day,t.date.month,t.date.year);
             break;
         }
