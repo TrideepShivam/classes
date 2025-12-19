@@ -5,7 +5,7 @@
 #include "./Transaction/transaction.h"
 #include "./LiveReading/liveReading.h"
 #include<conio.h>
-#include<windows.h>
+#include<time.h>
 
 /* Forward declarations for submenu handlers */
 void bookMenu(void);
@@ -13,6 +13,22 @@ void candidateMenu(void);
 void borrowMenu(void);
 void transactionMenu(void);
 void readingMenu(void);
+//function to store the date and time of the given variable through address
+void setCurrentDateTime(Date *d, Time *t) {
+    time_t now = time(NULL);
+    struct tm *timeinfo = localtime(&now);
+
+    // Update Date
+    d->day   = timeinfo->tm_mday;
+    d->month = timeinfo->tm_mon + 1;       // tm_mon is 0–11
+    d->year  = timeinfo->tm_year + 1900;   // tm_year is years since 1900
+
+    // Update Time
+    t->hr  = timeinfo->tm_hour;
+    t->min = timeinfo->tm_min;
+    t->sec = timeinfo->tm_sec;
+}
+
 
 /* Helper to clear stdin line */
 static void clear_stdin(void){ int c; while((c=getchar())!=EOF && c!='\n'); }
@@ -34,7 +50,6 @@ int main(void){
 			printf("Invalid input. Try again.\n\n");
 			continue;
 		}
-		system("cls");
 		switch (choice) {
 			case 1: bookMenu(); break;
 			case 2: candidateMenu(); break;
@@ -46,8 +61,6 @@ int main(void){
 		}
 		printf("\n");
 	}
-	printf("Press any key to continue: ");
-	getch();
 	return 0;
 }
 
@@ -57,14 +70,14 @@ void bookMenu(void){
 	int ch=0;
 	Book b;
 	while(1){
+		system("cls");
 		printf("--- Book Menu ---\n");
 		printf("1. Register Book\n");
-		printf("2. Retrieve book by ID\n");
-		printf("3. Get books by author\n");
-		printf("4. Get books by genere\n");
-		printf("5. Get book by name\n");
-		printf("6. Show all books\n");
-		printf("7. Check availability by ID\n");
+		printf("2. Get books by author\n");
+		printf("3. Get books by genere\n");
+		printf("4. Get book by name\n");
+		printf("5. Show all books\n");
+		printf("6. Check availability by ID\n");
 		printf("0. Main Menu\n");
 		printf("9. Exit\n");
 		printf("Enter choice: ");
@@ -83,28 +96,25 @@ void bookMenu(void){
 			B_Register(b);
 			printf("Book registered with ID %d\n", b.Book_ID);
 		} else if(ch==2){
-			int id; printf("Enter Book ID: "); if(scanf("%d", &id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; }
-			Book r = B_Retrive(id);
-			printf("Name: %s, Author: %s, Genere: %s, Price: %d, Count: %d, ID: %d\n",
-				   r.B_name, r.Author, r.Genere, r.price, r.B_count, r.Book_ID);
-		} else if(ch==3){
 			char author[100]; printf("Author: "); fgets(author, sizeof(author), stdin); author[strcspn(author,"\n")]=0;
 			get_book_by_author(author);
-		} else if(ch==4){
+		} else if(ch==3){
 			char g[50]; printf("Genere: "); fgets(g, sizeof(g), stdin); g[strcspn(g,"\n")]=0;
 			get_book_by_genere(g);
-		} else if(ch==5){
+		} else if(ch==4){
 			char name[100]; printf("Book name: "); fgets(name, sizeof(name), stdin); name[strcspn(name,"\n")]=0;
 			get_book_by_name(name);
-		} else if(ch==6){
+		} else if(ch==5){
 			Book all = Showall_Book();
 			printf("Sample book from Showall_Book - Name: %s\n", all.B_name);
-		} else if(ch==7){
+		} else if(ch==6){
 			int id; printf("Enter Book ID: "); if(scanf("%d", &id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; }
 			printf(is_available(id)?"Available\n":"Not available\n");
 		} else {
 			printf("Invalid choice.\n");
 		}
+		printf("\nPress any key to continue: ");
+		getch();
 		printf("\n");
 	}
 }
@@ -112,6 +122,7 @@ void bookMenu(void){
 void candidateMenu(void){
 	int ch=0; Candidate c;
 	while(1){
+		system("cls");
 		printf("--- Candidate Menu ---\n");
 		printf("1. Register Candidate\n");
 		printf("2. Show all Candidates\n");
@@ -134,6 +145,8 @@ void candidateMenu(void){
 		else if(ch==3){ int id; printf("ID: "); if(scanf("%d", &id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue;} Candidate r=getCandidateById(id); printf("Name: %s, Contact: %s\n", r.Name, r.contact); }
 		else if(ch==4){ char contact[20]; printf("Contact: "); fgets(contact, sizeof(contact), stdin); contact[strcspn(contact,"\n")]=0; Candidate r=getCandidateByContact(contact); printf("Name: %s, ID: %d\n", r.Name, r.id); }
 		else { printf("Invalid choice.\n"); }
+		printf("\nPress any key to continue: ");
+		getch();
 		printf("\n");
 	}
 }
@@ -141,6 +154,7 @@ void candidateMenu(void){
 void borrowMenu(void){
 	int ch=0; BookKeeping bk;
 	while(1){
+		system("cls");
 		printf("--- Borrow/Return Menu ---\n");
 		printf("1. Borrow (keep record)\n");
 		printf("2. Get borrow records by Candidate ID\n");
@@ -155,6 +169,8 @@ void borrowMenu(void){
 		else if(ch==2){ int id; printf("Candidate ID: "); if(scanf("%d", &id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; }  getborrowbyC_ID(id);}        
 		else if(ch==3){ showBookKeepingRecords(); }
 		else { printf("Invalid choice.\n"); }
+		printf("\nPress any key to continue: ");
+		getch();
 		printf("\n");
 	}
 }
@@ -162,6 +178,7 @@ void borrowMenu(void){
 void transactionMenu(void){
 	int ch=0; Transaction t;
 	while(1){
+		system("cls");
 		printf("--- Transaction Menu ---\n");
 		printf("1. Log Transaction\n");
 		printf("2. Show All Transactions\n");
@@ -173,11 +190,22 @@ void transactionMenu(void){
 		clear_stdin();
 		if(ch==0) return;
 		if(ch==9){ printf("Exiting...\n"); exit(0); }
-		if(ch==1){ printf("Transaction ID: "); if(scanf("%d", &t.id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } printf("Amount: "); if(scanf("%d", &t.amount)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } clear_stdin(); logTransaction(t); printf("Transaction logged.\n"); }
+		if(ch==1){ 
+			printf("Transaction ID: "); 
+			if(scanf("%d", &t.id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } 
+			printf("Amount: "); 
+			if(scanf("%d", &t.amount)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } 
+			clear_stdin();
+			setCurrentDateTime(&t.date,&t.time);
+			logTransaction(t); 
+			printf("Transaction logged.\n"); 
+		}
 		else if(ch==2){ getAllTransaction(); }
 		else if(ch==3){ int id; printf("ID: "); if(scanf("%d", &id)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } getTransactionById(id); }
 		else if(ch==4){ Date d; printf("Day Month Year: "); if(scanf("%d %d %d", &d.day, &d.month, &d.year)!=3){ clear_stdin(); printf("Invalid input.\n"); continue; } getTransactionByDate(d); }
 		else { printf("Invalid choice.\n"); }
+		printf("\nPress any key to continue: ");
+		getch();
 		printf("\n");
 	}
 }
@@ -185,6 +213,7 @@ void transactionMenu(void){
 void readingMenu(void){
 	int ch=0; LiveReading lr;
 	while(1){
+		system("cls");
 		printf("--- Live Reading Menu ---\n");
 		printf("1. Initiate Live Reading\n");
 		printf("2. Show Live Reading Records\n");
@@ -197,6 +226,8 @@ void readingMenu(void){
 		if(ch==1){ printf("Candidate ID: "); if(scanf("%d", &lr.C_ID)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } printf("Book ID: "); if(scanf("%d", &lr.B_ID)!=1){ clear_stdin(); printf("Invalid input.\n"); continue; } clear_stdin(); initiate(lr); printf("Live reading initiated.\n"); }
 		else if(ch==2){ showLiveRreading(); }
 		else { printf("Invalid choice.\n"); }
+		printf("\nPress any key to continue: ");
+		getch();
 		printf("\n");
 	}
 }
