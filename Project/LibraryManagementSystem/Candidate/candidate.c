@@ -36,9 +36,9 @@ void showCandidate( ){
             printf("File not found\n");
             return;
         }
-    printf("CANDIDATE DETAILS :\n-------------------------------------------------------------------------------------------\n%-4s | %-20s | %-10s | %-20s | %-13s | %-10s\n-------------------------------------------------------------------------------------------\n","ID","NAME","CONTACT","EMAIL","JOINING DATE","EXIT DATE");
+    printf("CANDIDATE DETAILS :\n-------------------------------------------------------------------------------------------\n%-4s | %-20s | %-10s | %-25s | %-13s | %-10s\n-------------------------------------------------------------------------------------------\n","ID","NAME","CONTACT","EMAIL","JOINING DATE","EXIT DATE");
     while(fread(&c,sizeof(Candidate),1,fp)==1){
-        printf("%-4d | %-20s | %-10s | %-20s | %-2d/%-2d/%-7d | %-2d/%-2d/%-4d \n",c.id,c.Name,c.contact,c.email,c.doj.day,c.doj.month,c.doj.year,c.doe.day,c.doe.month,c.doe.year);
+        printf("%-4d | %-20s | %-10s | %-25s | %-2d/%-2d/%-7d | %-2d/%-2d/%-4d \n",c.id,c.Name,c.contact,c.email,c.doj.day,c.doj.month,c.doj.year,c.doe.day,c.doe.month,c.doe.year);
     }
     fclose(fp);
 }
