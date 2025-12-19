@@ -1,18 +1,27 @@
 1. void registerCandidate(Candidate c): 
-        This function is used to add a new candidate's informations like ID,NAME,CONATACT,EMAIL,
-        DATE OF JOINING AND EXIT DATE into the system and collects all important details from 
-        the user and stores in candidate.dat.
+        This function is used to register a new candidate into the system.
+         It collects essentials informations like CandidateID,NAME,CONATACT,EMAIL ID,
+         DATE OF JOINING(DOJ) AND EXIT DATE(DOE) into the system and collects all important
+         details from the user . After validation, all the information is stored permanently in 
+         the candidate.dat for future use.
 
 2. void showCandidate( ): 
-        This function is used to show all candidate's information into the system and show 
-        all importatnt details of the user in a tabular structure.
+        This function is used to show all registered candidate's information stored in the system .
+        It reads data from the file and presents the details in a well-structured tabular format ,
+        making it easy for users to view and understands candidate records .
 
 3. Candidate getCandidateById(int id): 
-        This function is used to return candidate structure after comparing the given ID.
+        This function is used to search and retrieve a candidate's details using a unique CandidateID . 
+        It compares the given ID with records stored in the file and retuens the complete candidate 
+        structure if a match is found . 
 
 4. Candidate getCandidateByContact( ):
-        This function is used to return the candidate detail from the given contact.
+        This function is used for search a candidateusing their contact number .
+         If the provided contact number matches any record in the file, the function returns the
+         corresponding candidate's  complete details . 
 
 5. getCandidateID( ):
-         This function is used check last ID then they increase +1 for next and return.
+         This function is used to generate a new unique Candidate ID . 
+         It checks the last stored candidate ID in the file, increments it by +1, and returns the new ID 
+         to ensure uniqueness for every new candidate registration.
     
