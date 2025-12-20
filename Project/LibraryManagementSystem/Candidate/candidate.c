@@ -9,7 +9,7 @@ int getCandidateID() {
             return -1;
         }
     
-    int temp=0;
+    int temp=100;
     while (fread(&c, sizeof(Candidate), 1, f)){
         temp=c.id;
     }
