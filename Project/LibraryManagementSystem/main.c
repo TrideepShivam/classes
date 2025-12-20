@@ -304,20 +304,24 @@ void borrowMenu(void)
 				printf("Invalid input.\n");
 				continue;
 			}
-			Showall_Book();
-			printf("Choose Book ID: ");
-			if (scanf("%d", &bk.B_ID) != 1)
-			{
+			if(getCandidateById(bk.C_ID).id!=-1){
+				Showall_Book();
+				printf("Choose Book ID: ");
+				if (scanf("%d", &bk.B_ID) != 1)
+				{
+					clear_stdin();
+					printf("Invalid input.\n");
+					continue;
+				}
 				clear_stdin();
-				printf("Invalid input.\n");
-				continue;
+				Time t = {0,0,0};
+				setCurrentDateTime(&bk.DOI,&t);
+				bk.DOR = (Date){0,0,0};
+				keep(bk);
+				printf("Borrow recorded.\n");
+			}else{
+				printf("Candidate ID is invalid: Try again\n");
 			}
-			clear_stdin();
-			Time t = {0,0,0};
-			setCurrentDateTime(&bk.DOI,&t);
-			bk.DOR = (Date){0,0,0};
-			keep(bk);
-			printf("Borrow recorded.\n");
 		}
 		else if (ch == 2)
 		{
@@ -469,19 +473,23 @@ void readingMenu(void)
 				printf("Invalid input.\n");
 				continue;
 			}
-			Showall_Book();
-			printf("Choose Book ID: ");
-			if (scanf("%d", &lr.B_ID) != 1)
-			{
+			if(getCandidateById(lr.C_ID).id!=-1){
+				Showall_Book();
+				printf("Choose Book ID: ");
+				if (scanf("%d", &lr.B_ID) != 1)
+				{
+					clear_stdin();
+					printf("Invalid input.\n");
+					continue;
+				}
 				clear_stdin();
-				printf("Invalid input.\n");
-				continue;
+				setCurrentDateTime(&lr.date,&lr.entry);
+				lr.exit = (Time){0,0,0};
+				initiate(lr);
+				printf("Live reading initiated.\n");
+			}else{
+				printf("Candidate ID is invalid: Try again\n");
 			}
-			clear_stdin();
-			setCurrentDateTime(&lr.date,&lr.entry);
-			lr.exit = (Time){0,0,0};
-			initiate(lr);
-			printf("Live reading initiated.\n");
 		}
 		else if (ch == 2)
 		{
