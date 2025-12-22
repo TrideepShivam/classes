@@ -11,11 +11,11 @@ void logTransaction(Transaction t){
         return;
     }
     //write a code to get the last id and add it into t structure after increament
-    int lastId=0;
-    while (fread(&temp, sizeof(Transaction), 1, f)){
-        lastId=temp.id;
-    }
-    t.id = lastId+1;
+    // int lastId=0;
+    // while (fread(&temp, sizeof(Transaction), 1, f)){
+    //     lastId=temp.id;
+    // }
+    // t.id = lastId+1;
     fwrite(&t,sizeof(Transaction),1,f);
     fclose(f);
     printf("Data written successfully!\n");
@@ -28,7 +28,7 @@ void getAllTransaction(){
         printf("File does not exist.\n");
         return;
     }
-    printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","ID","AMOUNT","TIME","DATE");
+    printf("TRANSACTION DETAILS :\n--------------------------------------\n%-5s | %-6s | %-10s | %-12s\n----------------------------------------\n","C ID","AMOUNT","TIME","DATE");
     while (fread(&t, sizeof(Transaction), 1, f)) {
         printf("%-5d | %-6d | %-2d:%-2d:%-2d | %-2d/%-2d/%-4d\n",t.id,t.amount,t.time.hr,t.time.min,t.time.sec,t.date.day,t.date.month,t.date.year);      
     }

@@ -380,24 +380,29 @@ void transactionMenu(void)
 		}
 		if (ch == 1)
 		{
-			printf("Transaction ID: ");
+			printf("CANDITATE ID: ");
 			if (scanf("%d", &t.id) != 1)
 			{
 				clear_stdin();
 				printf("Invalid input.\n");
 				continue;
 			}
-			printf("Amount: ");
-			if (scanf("%d", &t.amount) != 1)
-			{
+			Candidate c = getCandidateById(t.id);
+			if(c.id != -1){
+				printf("Amount: ");
+				if (scanf("%d", &t.amount) != 1)
+				{
+					clear_stdin();
+					printf("Invalid input.\n");
+					continue;
+				}
 				clear_stdin();
-				printf("Invalid input.\n");
-				continue;
+				setCurrentDateTime(&t.date, &t.time);
+				logTransaction(t);
+				printf("Transaction logged with name: %s amount: %d\n",c.Name,t.amount);
+			}else{
+				printf("Invalid Candidate ID: Try again\n");
 			}
-			clear_stdin();
-			setCurrentDateTime(&t.date, &t.time);
-			logTransaction(t);
-			printf("Transaction logged.\n");
 		}
 		else if (ch == 2)
 		{
