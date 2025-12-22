@@ -5,7 +5,6 @@
 #include "./Transaction/transaction.h"
 #include "./LiveReading/liveReading.h"
 #include <conio.h>
-#include <time.h>
 
 /* Forward declarations for submenu handlers */
 void bookMenu(void);
@@ -14,28 +13,13 @@ void borrowMenu(void);
 void transactionMenu(void);
 void readingMenu(void);
 // function to store the date and time of the given variable through address
-void setCurrentDateTime(Date *d, Time *t)
-{
-	time_t now = time(NULL);
-	struct tm *timeinfo = localtime(&now);
 
-	// Update Date
-	d->day = timeinfo->tm_mday;
-	d->month = timeinfo->tm_mon + 1;	// tm_mon is 0–11
-	d->year = timeinfo->tm_year + 1900; // tm_year is years since 1900
-
-	// Update Time
-	t->hr = timeinfo->tm_hour;
-	t->min = timeinfo->tm_min;
-	t->sec = timeinfo->tm_sec;
-}
 
 /* Helper to clear stdin line */
 static void clear_stdin(void)
 {
 	int c;
-	while ((c = getchar()) != EOF && c != '\n')
-		;
+	while ((c = getchar()) != EOF && c != '\n');
 }
 
 int main(void)
@@ -452,6 +436,7 @@ void readingMenu(void)
 		printf("--- Live Reading Menu ---\n");
 		printf("1. Initiate Live Reading\n");
 		printf("2. Show Live Reading Records\n");
+		printf("3. Done Live Reading\n");
 		printf("0. Main Menu\n");
 		printf("9. Exit\n");
 		printf("Enter choice: ");
@@ -499,6 +484,22 @@ void readingMenu(void)
 		else if (ch == 2)
 		{
 			showLiveRreading();
+		}
+		else if (ch == 3)
+		{
+			printf("CANDITATE ID: ");
+			if (scanf("%d", &lr.C_ID) != 1)
+			{
+				clear_stdin();
+				printf("Invalid input.\n");
+				continue;
+			}
+			Candidate c = getCandidateById(lr.C_ID);
+			if(c.id != -1){
+				destroy(lr.C_ID);
+			}else{
+				printf("Candidate Id is invalid\n");
+			}
 		}
 		else
 		{

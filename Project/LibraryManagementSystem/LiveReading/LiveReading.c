@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "../Book/book.h"
 #include "../Candidate/candidate.h"
+
 void initiate(LiveReading lr){
     FILE *f;
     f = fopen("data/LiveReading.dat","ab");  //ab = "Appending in Binory..."
@@ -12,6 +13,7 @@ void initiate(LiveReading lr){
     } 
     fwrite(&lr, sizeof(LiveReading ), 1, f);
     fclose(f);
+    update_book_count(lr.B_ID,-1);
     printf("Data written successfully!\n");
 }
 void showLiveRreading(){
@@ -28,6 +30,27 @@ void showLiveRreading(){
         Candidate c=getCandidateById(lr.C_ID);
         printf("%-4d | %-20s | %-4d| %-25s | %2d:%2d:%2d | %2d:%2d:%2d| %2d/%2d/%4d\n",lr.C_ID,c.Name,lr.B_ID,b.B_name,lr.entry.hr,lr.entry.min,lr.entry.sec,lr.exit.hr,lr.exit.min,lr.exit.sec,lr.date.day,lr.date.month,lr.date.year);
     }
+}
+
+void destroy (int C_ID){
+    FILE *f;
+    LiveReading lr;
+    f =fopen("data/LiveReading.dat","rb+"); //rb ="Reading in Binory..."
+    if(f==NULL){
+        printf("File not read.\n");
+        return;
+    }
+    while (fread(&lr, sizeof(LiveReading), 1, f)) {
+        if(C_ID == lr.C_ID){
+            Date d;
+            setCurrentDateTime(&d,&lr.exit);
+            fseek(f,-sizeof(LiveReading),SEEK_CUR);
+            fwrite(&lr,sizeof(LiveReading),1,f);
+            printf("Book count updated successfuly.\n");
+            break;
+        }
+    }
+    update_book_count(lr.B_ID,1);
 }
 
 // void main(){

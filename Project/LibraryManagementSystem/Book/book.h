@@ -18,4 +18,6 @@ void get_book_by_name(const char *name);
 Book Showall_Book ();
 int is_available(int id);
 int is_book_ID_valid(int ID);
+void update_book_count(int, int);
+
 #endif /* BOOK_H */

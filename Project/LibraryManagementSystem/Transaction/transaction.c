@@ -4,7 +4,6 @@
 
 void logTransaction(Transaction t){
     FILE *f;
-    Transaction temp;
     f = fopen("data/Transaction.dat","ab+");
     if (f==NULL){
         printf("File does not exist.\n");

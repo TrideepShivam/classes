@@ -3,6 +3,7 @@ CFLAGS := -I. -Wall -Wextra -g
 RM := rm -f
 
 SRCS := main.c \
+        config.c \
         Book/book.c \
         Candidate/candidate.c \
         Transaction/transaction.c \

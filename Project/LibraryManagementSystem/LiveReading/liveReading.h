@@ -6,6 +6,7 @@
 
 /* LiveReading-related function prototypes */
 void initiate(LiveReading lr);
+void destroy(int);
 void showLiveRreading(void);
 
 #endif /* LIVEREADING_H */
