@@ -73,8 +73,7 @@ int main(void)
 }
 
 /* ---------------- Menu implementations ---------------- */
-void bookMenu(void)
-{
+void bookMenu(void){
 	int ch = 0;
 	Book b;
 	while (1)
